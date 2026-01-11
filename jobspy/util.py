@@ -298,7 +298,10 @@ def extract_job_type(description: str):
 
 
 def map_str_to_site(site_name: str) -> Site:
-    return Site[site_name.upper()]
+    site_name = site_name.upper()
+    if site_name in ["LEVELS.FYI", "LEVELSFYI", "LEVELS_FYI"]:
+        return Site.LEVELSFYI
+    return Site[site_name]
 
 
 def get_enum_from_value(value_str):
